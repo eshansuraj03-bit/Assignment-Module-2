@@ -1,0 +1,13 @@
+## Architecture Recommendation
+
+I would recommend using a Data Lakehouse architecture for the food delivery startup. This approach combines the scalability of a data lake with the structured querying capabilities of a data warehouse.
+
+First, the startup deals with multiple types of data such as GPS logs, text reviews, payment transactions, and images. A data lakehouse can store both structured and unstructured data efficiently, unlike traditional data warehouses which are limited to structured data.
+
+Second, scalability is critical for a fast-growing startup. A data lakehouse allows storage of large volumes of raw data at low cost, while still supporting analytical queries using SQL engines like DuckDB or Spark.
+
+Third, real-time and advanced analytics are essential for features like route optimization, customer sentiment analysis, and fraud detection. A data lakehouse supports both batch and real-time processing, enabling faster decision-making.
+
+Additionally, it provides flexibility for machine learning workloads, such as analyzing reviews or detecting anomalies in transactions. This makes it more suitable than a traditional data warehouse or a pure data lake.
+
+Therefore, a data lakehouse offers the best balance between flexibility, scalability, and analytical performance for this use case.
