@@ -1,0 +1,17 @@
+Storage Systems
+To meet the hospital’s requirements, a combination of storage systems is used. A Data Lake is used to store raw and unstructured data such as ICU vitals, doctor notes, and logs. This allows flexibility and scalability for handling large volumes of heterogeneous data. A Data Warehouse is used for structured and cleaned data to support reporting needs such as monthly summaries of bed occupancy and departmental costs. This enables fast and efficient analytical queries.
+A Vector Database is used for semantic search functionality. Patient records and doctor notes are converted into embeddings, allowing doctors to query data using natural language. This enables meaningful search beyond keyword matching.
+For real-time ICU data, a streaming system (such as Kafka) feeds into the Data Lake and alert systems. This ensures immediate processing of critical patient vitals.
+
+
+
+OLTP vs OLAP Boundary
+The OLTP system consists of operational databases such as the EHR system, billing systems, and ICU monitoring systems where real-time transactions occur. These systems prioritize speed, consistency, and reliability for daily hospital operations.
+The OLAP system begins at the Data Lake and Data Warehouse layers. Data is extracted from OLTP systems and transformed before being loaded into analytical systems. The Data Warehouse supports reporting and business intelligence, while the Data Lake supports advanced analytics and machine learning.
+Thus, the boundary between OLTP and OLAP lies at the data ingestion layer, where transactional data is moved into analytical storage for further processing.
+
+
+Trade-offs
+One major trade-off in this architecture is between consistency and scalability. Real-time streaming systems and data lakes prioritize scalability and speed, but may introduce slight delays or inconsistencies compared to strict transactional systems.
+To mitigate this, critical operations such as patient records and billing remain in strongly consistent OLTP systems. Meanwhile, analytical and AI workloads operate on slightly delayed but scalable systems. Data validation and periodic synchronization ensure consistency across systems.
+This hybrid approach balances performance, scalability, and reliability, making it suitable for a healthcare environment where both real-time response and accurate data are essential.
